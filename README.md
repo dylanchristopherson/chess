@@ -1,1 +1,1 @@
-# chess attempt
+# Attempt at chess!
