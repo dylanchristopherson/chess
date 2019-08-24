@@ -13,7 +13,7 @@ function GameBoard() {
 
         for (i = 0; i < 8; i++) {
             for (j = 0; j < 4; j++) {
-                //fill(color(220, 220, 220))
+                fill(color(0, 0, 255))
                 rect(this.x, this.y, 100, 100);
                 this.x = this.x + 200
             }

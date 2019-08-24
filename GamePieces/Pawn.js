@@ -5,6 +5,7 @@ function Pawn(x, y) {
     this.dist = 100;
 
     this.show = function () {
+        fill(255, 204, 0);
         circle(this.x, this.y, this.diam);
     }
 
