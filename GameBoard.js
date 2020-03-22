@@ -8,6 +8,7 @@ function GameBoard() {
     this.show = function () {
         // createCanvas(800, 800);
         //background(153);
+        
         this.x = 0;
         this.y = 0;
 

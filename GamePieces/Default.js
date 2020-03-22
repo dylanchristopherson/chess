@@ -1,4 +1,4 @@
-function Rook(x, y) {
+function Default(x, y, pieceType) {
     this.x = x;
     this.y = y;
     this.xp = x;
@@ -48,12 +48,9 @@ function Rook(x, y) {
         if (mouseIsPressed == true && this.dist < this.diam) {
             
             // if pressed and on circle, x and y will update
-            //this.x = mouseX;
-            //this.y = mouseY;
-            //circle(mouseX, mouseY, this.diam);
             this.x = mouseX;
-            this.y = mouseY;            
-            rect(this.x - (this.diam/2), this.y - (this.diam/2), this.diam, this.diam);
+            this.y = mouseY;
+            circle(mouseX, mouseY, this.diam);
         } else {
             
             this.xc = this.convertToCoord(this.x);
@@ -81,24 +78,22 @@ function Rook(x, y) {
         }
 
         if (nx != px || ny != py) { // Has moved
-            if(this.xdiff == 0 || this.ydiff == 0) {                 
-                // circle(this.boardPixelLocation[nx], this.boardPixelLocation[ny], this.diam);
-                rect(this.boardPixelLocation[nx]-(this.diam/2), this.boardPixelLocation[ny]-(this.diam/2),this.diam, this.diam);
+            // this.choosePiece(pieceType);
+            if(this.xdiff == this.ydiff) {                 
+                circle(this.boardPixelLocation[nx], this.boardPixelLocation[ny], this.diam);
                 this.x = this.boardPixelLocation[nx]
                 this.y = this.boardPixelLocation[ny]
                 this.xp = this.boardPixelLocation[nx]
                 this.yp = this.boardPixelLocation[ny]
             } else {
-                // circle(this.boardPixelLocation[px], this.boardPixelLocation[py], this.diam);
-                rect(this.boardPixelLocation[nx]-(this.diam/2), this.boardPixelLocation[ny]-(this.diam/2),this.diam, this.diam);
+                circle(this.boardPixelLocation[px], this.boardPixelLocation[py], this.diam);
                 this.x = this.boardPixelLocation[px]
                 this.y = this.boardPixelLocation[py]
                 this.xp = this.boardPixelLocation[px]
                 this.yp = this.boardPixelLocation[py]
             }
         } else { 
-            // circle(this.boardPixelLocation[px], this.boardPixelLocation[py], this.diam);
-            rect(this.boardPixelLocation[nx]-(this.diam/2), this.boardPixelLocation[ny]-(this.diam/2),this.diam, this.diam);
+            circle(this.boardPixelLocation[px], this.boardPixelLocation[py], this.diam);
             this.x = this.boardPixelLocation[px]
             this.y = this.boardPixelLocation[py]
             this.xp = this.boardPixelLocation[px]
@@ -109,23 +104,19 @@ function Rook(x, y) {
     this.convertToCoord = function (p) {
         return (p - (p % 100)) / 100
     }
+
+    this.choosePiece(pieceType) {
+        // Create a switch statement for different pieces
+        // Each switch statement will run the specific pieces requirements
+
+        // pawn
+        // rook
+        // knight
+        // bishop
+        // queen
+        // king
+        
+        // create a black pawn and a white pawn
+        // remove absolute value and that'll tell you direction
+    }
 }
-
-// Bishop is in P(0, 0)
-// P(0,1) is legal
-// P(0,2) is legal
-// P (0,3)
-// P (0,4)
-// P (0,5)
-// P (0,6)
-// P (0, 7)
-
-// P(0,0)
-// P(1,0)
-// P(2,0)
-// P(3,0)
-// P(4,0)
-
-
-// If the difference between start and finish for both is the same, it's a legal move?
-
