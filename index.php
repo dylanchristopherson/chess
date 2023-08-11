@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="">
 
+
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +13,7 @@
       margin: 0;
     }
   </style>
+
   <script src="SupportFiles/p5.js"></script>
   <script src="SupportFiles/p5.dom.js"></script>
   <script src="SupportFiles/p5.sound.js"></script>
@@ -27,6 +30,11 @@
 </head>
 
 <body>
+  <?php $IPATH = "/server/assets/"; include($IPATH."nav.html"); ?>
+  <style>
+    <?php include($IPATH."nav.css"); ?>
+  </style>
+  <br>
 </body>
 
 </html>
