@@ -1,4 +1,4 @@
-function Knight(x, y) {
+function Knight(x, y, team) {
     this.x = x;
     this.y = y;
     this.xp = x;
@@ -38,12 +38,15 @@ function Knight(x, y) {
     */
 
     this.show = function () {
-        fill(255, 204, 207);
+        setColor(team);
+
         circle(this.x, this.y, this.diam);
     }
 
     this.update = function () {
         
+        setColor(team);
+
         this.dist = dist(mouseX, mouseY, this.x, this.y);
         if (mouseIsPressed == true && this.dist < this.diam) {
             

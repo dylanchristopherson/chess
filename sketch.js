@@ -1,4 +1,4 @@
-// Team 0 and 1
+// Team white and black
 
 var gameboard;
 var pawns = [];
@@ -16,15 +16,17 @@ var boardPixelLocalsY = [];
 
 function setup() {
   
+   
   createCanvas(800, 800);
+  // Sets the background of the canvas to gray
   background(153);
 
+  // Fills in the non-gray squares to create a board
   gameboard = new GameBoard();
   gameboard.show();
 
   // Storing all locations on board
   var temp = 50;
-  
   
   for(var j = 0; j < 8; j++) {
     boardPixelLocalsX[j] = temp;
@@ -32,7 +34,7 @@ function setup() {
     // = new point(xtemp, ytemp);
     temp += 100;
   }
-  temp += 100;
+  
     
   
 /*
@@ -47,42 +49,43 @@ function setup() {
     pawnx = pawnx + 100;
   }
 */
-  // Creates rooks
-  rooks[0] = new Rook(50, 50);
-  rooks[1] = new Rook(50, 750);
-  rooks[2] = new Rook(750, 50);
-  rooks[3] = new Rook(750, 750);
+  // Creates and displays rooks
+  rooks[0] = new Rook(50, 50, "white");
+  rooks[2] = new Rook(750, 50, "white");
+  rooks[1] = new Rook(50, 750, "black");
+  rooks[3] = new Rook(750, 750, "black");
 
   for (i = 0; i < 4; i++) rooks[i].show();
 
-  // Creates knights
-  knights[0] = new Knight(150, 50);
-  knights[1] = new Knight(650, 50);
-  knights[2] = new Knight(150, 750);
-  knights[3] = new Knight(650, 750);
+  // Creates and displays knights
+  knights[0] = new Knight(150, 50, "white");
+  knights[1] = new Knight(650, 50, "white");
+  knights[2] = new Knight(150, 750, "black");
+  knights[3] = new Knight(650, 750, "black");
 
   for (i = 0; i < 4; i++) knights[i].show();
 
-  // Creates bishops
-  bishops[0] = new Bishop(250, 50);
-  bishops[1] = new Bishop(550, 50);
-  bishops[2] = new Bishop(250, 750);
-  bishops[3] = new Bishop(550, 750);
+  // Creates and displays bishops
+  bishops[0] = new Bishop(250, 50, "white");
+  bishops[1] = new Bishop(550, 50, "white");
+  bishops[2] = new Bishop(250, 750, "black");
+  bishops[3] = new Bishop(550, 750, "black");
   
 
   for (i = 0; i < 4; i++) bishops[i].show();
 
-  // Creates kingsueens
-  queens[0] = new Queen(350, 50);
-  queens[1] = new Queen(350, 750);
+  // Creates and displays Queens
+  queens[0] = new Queen(350, 50, "white");
+  queens[1] = new Queen(350, 750, "black");
 
   for (i = 0; i < 2; i++) queens[i].show();
 
-  // Creates kings
-  kings[0] = new King(450, 50);
-  kings[1] = new King(450, 750);
+  // Creates and displays kings
+  kings[0] = new King(450, 50, "white");
+  kings[1] = new King(450, 750, "black");
 
   for (i = 0; i < 2; i++) kings[i].show();
+
 }
 
 function draw() {
@@ -101,16 +104,17 @@ function draw() {
     pawns[z + 8].update();
   }
 */
-  fill(20, 152, 200)
+  // fill(20, 152, 200)
 
   // Updates the positions of all pieces
   for (i = 0; i < 4; i++) rooks[i].update();
   for (i = 0; i < 4; i++) knights[i].update();
+  for (i = 0; i < 4; i++) bishops[i].update();
+
   for (i = 0; i < 2; i++) queens[i].update();
   for (i = 0; i < 2; i++) kings[i].update();
 
-  fill(20, 152, 10)
-  for (i = 0; i < 4; i++) bishops[i].update();
+
 }
 
 /***** Next steps *****/

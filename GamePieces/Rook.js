@@ -1,8 +1,8 @@
-function Rook(x, y) {
-    this.x = x;
-    this.y = y;
-    this.xp = x;
-    this.yp = y;
+function Rook(x, y, team) {
+    this.x = x; // x position
+    this.y = y; // y position
+    this.xp = x; // x previous position
+    this.yp = y; // y previous position
 
     this.xc = 0; // Coordinates of x
     this.yc = 0; // Coordinates of y
@@ -38,14 +38,15 @@ function Rook(x, y) {
     */
 
     this.show = function () {
-        fill(255, 204, 207);
-        circle(this.x, this.y, this.diam);
+        setColor(team);
     }
 
     this.update = function () {
         
+        setColor(team);
+
         this.dist = dist(mouseX, mouseY, this.x, this.y);
-        if (mouseIsPressed == true && this.dist < this.diam) {
+        if (mouseIsPressed == true && this.dist < this.diam) { // Allows the piece to follow mouse movements
             
             // if pressed and on circle, x and y will update
             //this.x = mouseX;
@@ -54,8 +55,9 @@ function Rook(x, y) {
             this.x = mouseX;
             this.y = mouseY;            
             rect(this.x - (this.diam/2), this.y - (this.diam/2), this.diam, this.diam);
-        } else {
-            
+        } else { 
+            // Once the mouse is released, check if the coordinates are different, if they are, 
+            // check for a legal move and update the location
             this.xc = this.convertToCoord(this.x);
             this.yc = this.convertToCoord(this.y);
             this.xcp = this.convertToCoord(this.xp);
@@ -80,24 +82,27 @@ function Rook(x, y) {
             this.ydiff = this.ydiff * -1;
         }
 
-        if (nx != px || ny != py) { // Has moved
+        // Has moved
+        if (nx != px || ny != py) { 
+
+            // Because this is a rook, either the difference in the x direction or the difference in the y direction will need
+            // to stay the same
+
+
             if(this.xdiff == 0 || this.ydiff == 0) {                 
-                // circle(this.boardPixelLocation[nx], this.boardPixelLocation[ny], this.diam);
                 rect(this.boardPixelLocation[nx]-(this.diam/2), this.boardPixelLocation[ny]-(this.diam/2),this.diam, this.diam);
                 this.x = this.boardPixelLocation[nx]
                 this.y = this.boardPixelLocation[ny]
                 this.xp = this.boardPixelLocation[nx]
                 this.yp = this.boardPixelLocation[ny]
-            } else {
-                // circle(this.boardPixelLocation[px], this.boardPixelLocation[py], this.diam);
+            } else { // If the rook didn't move in a valid direction
                 rect(this.boardPixelLocation[nx]-(this.diam/2), this.boardPixelLocation[ny]-(this.diam/2),this.diam, this.diam);
                 this.x = this.boardPixelLocation[px]
                 this.y = this.boardPixelLocation[py]
                 this.xp = this.boardPixelLocation[px]
                 this.yp = this.boardPixelLocation[py]
             }
-        } else { 
-            // circle(this.boardPixelLocation[px], this.boardPixelLocation[py], this.diam);
+        } else {  // Hasn't moved, set the position to the previous position
             rect(this.boardPixelLocation[nx]-(this.diam/2), this.boardPixelLocation[ny]-(this.diam/2),this.diam, this.diam);
             this.x = this.boardPixelLocation[px]
             this.y = this.boardPixelLocation[py]
@@ -106,10 +111,16 @@ function Rook(x, y) {
         }
     }
 
+    // 
     this.convertToCoord = function (p) {
         return (p - (p % 100)) / 100
     }
+
+    this.drawRook = function() {
+        rect(this.boardPixelLocation[nx]-(this.diam/2), this.boardPixelLocation[ny]-(this.diam/2),this.diam, this.diam);
+    }
 }
+
 
 // Bishop is in P(0, 0)
 // P(0,1) is legal

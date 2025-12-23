@@ -19,6 +19,7 @@
   <script src="SupportFiles/p5.sound.js"></script>
   <script src="sketch.js"></script>
   <script src="GameBoard.js"></script>
+  <script src="GamePieces/Common.js"></script>
   <script src="GamePieces/Default.js"></script>
   <script src="GamePieces/Pawn.js"></script>
   <script src="GamePieces/King.js"></script>

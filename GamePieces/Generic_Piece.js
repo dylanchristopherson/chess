@@ -1,15 +1,14 @@
-function Queen(x, y, team) {
+function Generic_Piece(x, y, team, piece_type) {
     this.x = x;
-    this.y = y;
     this.xp = x;
-    this.yp = y;
-
     this.xc = 0; // Coordinates of x
-    this.yc = 0; // Coordinates of y
     this.xcp = 0; // Previous coordinates of x
-    this.ycp = 0; // Previous coordinates of y
-
     this.xdiff = 0;
+
+    this.y = y;
+    this.yp = y;
+    this.yc = 0; // Coordinates of y
+    this.ycp = 0; // Previous coordinates of y
     this.ydiff = 0;
 
     this.diam = 40;
@@ -39,7 +38,6 @@ function Queen(x, y, team) {
 
     this.show = function () {
         setColor(team);
-
         circle(this.x, this.y, this.diam);
     }
 

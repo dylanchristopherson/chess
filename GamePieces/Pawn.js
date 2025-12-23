@@ -1,15 +1,19 @@
-function Pawn(x, y) {
+function Pawn(x, y, team) {
     this.x = x;
     this.y = y;
     this.diam = 40;
     this.dist = 100;
 
     this.show = function () {
-        fill(255, 204, 0);
+        setColor(team);
+
         circle(this.x, this.y, this.diam);
     }
 
     this.update = function () {
+        
+        setColor(team);
+
         if (mouseIsPressed == true) {
 
             this.dist = dist(mouseX, mouseY, this.x, this.y);
